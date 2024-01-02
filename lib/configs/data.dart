@@ -1,4 +1,11 @@
+import 'package:animdribb/configs/assets.dart';
 import 'package:animdribb/model/trip.dart';
+
+final Trip headerTrip = Trip(
+  name: "Riding throungh the lands of the legends",
+  duration: "May 5-15",
+  imageUrl: Assets.mountain,
+);
 
 final List<Trip> trips = [
   Trip(
