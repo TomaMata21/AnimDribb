@@ -2,9 +2,9 @@
 
 This app is animation inspired by The FlutterWay Channel youtube channel
 
-## Demo in video
+## Demo i
 
-
+https://github.com/TomaMata21/AnimDribb/assets/70801569/2a73ef9f-88d2-4bf8-a398-79c9620e5d88
 
 ## Getting Started
 1. **Prerequisites**: Ensure you have Flutter installed on your system.
