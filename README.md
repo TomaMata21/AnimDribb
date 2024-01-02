@@ -1,16 +1,26 @@
 # animdribb
 
-A dribble animation UI in flutter.
+This app is animation inspired by The FlutterWay Channel youtube channel
+
+## Demo in video
+
+
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Prerequisites**: Ensure you have Flutter installed on your system.
+2. **Clone this Repository**:
+ ```bash
+git clone https://github.com/TomaMata21/AnimDribb.git
+```
+3. **Navigate to the Directory**:
+  ```bash
+cd AnimDribb
+```  
+4. **Install dependencies**:
+  ```bash
+ flutter pub get
+```
+5. **Run the App**:
+ ```bash
+ flutter run
+```  
