@@ -1,9 +1,9 @@
 import 'package:animdribb/configs/assets.dart';
 import 'package:animdribb/model/trip.dart';
-import 'package:animdribb/screens/widgets/user_card.dart';
+import 'package:animdribb/screens/widgets/bg_overlay.dart';
+import 'package:animdribb/screens/widgets/trip_detail_page_header.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 class TripDetailScreen extends StatelessWidget {
   const TripDetailScreen({
@@ -16,7 +16,6 @@ class TripDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
-    final height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
@@ -77,60 +76,11 @@ class TripDetailScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.3),
-              ),
+            const Hero(
+              tag: "bgOverlay",
+              child: BgOverlay(),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 16,
-                bottom: height * 0.1,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Hero(
-                    tag:"duration",
-                    child: Text(
-                      trip.duration,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const Gap(12),
-                  SizedBox(
-                    width: width * 0.6,
-                    child: Hero(
-                      tag:"name",
-                      child: Text(
-                        trip.name,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Gap(12),
-                  Wrap(
-                    runSpacing: 8,
-                    spacing: 12,
-                    children: List.generate(
-                      trip.users.length,
-                      (index) => UserCard(
-                        index: index,
-                        trip: trip,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            TripDetailPageHeader(trip: trip),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:animdribb/configs/assets.dart';
 import 'package:animdribb/configs/data.dart';
 import 'package:animdribb/screens/trip_detail_screen.dart';
+import 'package:animdribb/screens/widgets/bg_overlay.dart';
 import 'package:animdribb/screens/widgets/trip_user_profile.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -53,11 +54,9 @@ class HomeHeader extends StatelessWidget {
                 ),
               )),
             ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.black.withOpacity(0.3),
-              ),
+            const Hero(
+              tag: "bgOverlay",
+              child: BgOverlay(),
             ),
             Positioned(
               bottom: height * 0.05,
