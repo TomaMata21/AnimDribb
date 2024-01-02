@@ -91,24 +91,28 @@ class TripDetailScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    trip.duration,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                  Hero(
+                    tag:"duration",
+                    child: Text(
+                      trip.duration,
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   const Gap(12),
                   SizedBox(
                     width: width * 0.6,
-                    child: Text(
-                      trip.name,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                    child: Hero(
+                      tag:"name",
+                      child: Text(
+                        trip.name,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

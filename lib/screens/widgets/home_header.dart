@@ -16,10 +16,20 @@ class HomeHeader extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => TripDetailScreen(
-            trip: headerTrip,
-          ),
+        PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 500),
+          reverseTransitionDuration: const Duration(milliseconds: 500),
+          pageBuilder: (_, animation, __) {
+            return TripDetailScreen(
+              trip: headerTrip,
+            );
+          },
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
         ),
       ),
       child: Container(
@@ -28,7 +38,6 @@ class HomeHeader extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: width * 0.05),
         decoration: const BoxDecoration(
           color: Colors.white,
-
         ),
         child: Stack(
           clipBehavior: Clip.none,
@@ -36,14 +45,13 @@ class HomeHeader extends StatelessWidget {
             Hero(
               tag: "bg",
               child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    image: CachedNetworkImageProvider(headerTrip.imageUrl),
-                    fit: BoxFit.cover,
-                  ),
-                )
-              ),
+                  decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                image: DecorationImage(
+                  image: CachedNetworkImageProvider(headerTrip.imageUrl),
+                  fit: BoxFit.cover,
+                ),
+              )),
             ),
             Container(
               decoration: BoxDecoration(
@@ -60,24 +68,28 @@ class HomeHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    headerTrip.duration,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                  Hero(
+                    tag: "duration",
+                    child: Text(
+                      headerTrip.duration,
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            color: Colors.white,
+                          ),
                     ),
                   ),
                   const Gap(16),
                   SizedBox(
                     width: width * 0.6,
-                    child: Text(
-                      headerTrip.name,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                    child: Hero(
+                      tag: "name",
+                      child: Text(
+                        headerTrip.name,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                     ),
                   ),
