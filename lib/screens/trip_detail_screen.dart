@@ -61,25 +61,30 @@ class TripDetailScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
+      body: SizedBox(
         width: width,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: CachedNetworkImageProvider(trip.imageUrl),
-            fit: BoxFit.cover,
-          ),
-        ),
         child: Stack(
           alignment: Alignment.bottomLeft,
           children: [
+            Hero(
+              tag: "bg",
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(trip.imageUrl),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.3),
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(
-                left:  16,
+              padding: EdgeInsets.only(
+                left: 16,
                 bottom: height * 0.1,
               ),
               child: Column(

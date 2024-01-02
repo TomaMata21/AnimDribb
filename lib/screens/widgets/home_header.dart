@@ -23,20 +23,28 @@ class HomeHeader extends StatelessWidget {
         ),
       ),
       child: Container(
-        height: height * 0.3,
+        height: height * 0.4,
         width: width * 0.9,
         margin: EdgeInsets.symmetric(horizontal: width * 0.05),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          image: DecorationImage(
-            image: CachedNetworkImageProvider(headerTrip.imageUrl),
-            fit: BoxFit.cover,
-          ),
+
         ),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
+            Hero(
+              tag: "bg",
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(headerTrip.imageUrl),
+                    fit: BoxFit.cover,
+                  ),
+                )
+              ),
+            ),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
